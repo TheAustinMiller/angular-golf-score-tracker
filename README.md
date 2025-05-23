@@ -1,6 +1,8 @@
 # GolfScoreTracker
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
+![image](https://github.com/user-attachments/assets/c0c30152-d4f7-40ae-86ea-bbde1b9a6680)
+
 
 ## Development server
 
