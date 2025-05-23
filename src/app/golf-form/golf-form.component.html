@@ -1,0 +1,38 @@
+<div class="form-container">
+  <form calss="golf-form" (ngSubmit)="saveScorecard()">
+    <table>
+      <thead>
+        <tr>
+          <th>Hole</th>
+          <th *ngFor="let hole of scorecard.par; let i = index">{{ i + 1 }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Par</td>
+          <td *ngFor="let hole of scorecard.par; let i = index; trackBy: trackByIndex">
+            <input
+              type="number"
+              [(ngModel)]="scorecard.par[i]"
+              name="par{{i}}"
+              required
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Score</td>
+          <td *ngFor="let hole of scorecard.score; let i = index; trackBy: trackByIndex">
+            <input
+              type="number"
+              [(ngModel)]="scorecard.score[i]"
+              name="score{{i}}"
+              required
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button type="submit">Save Scorecard</button>
+  </form>
+</div>

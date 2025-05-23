@@ -1,0 +1,36 @@
+<div class="golf-list" *ngIf="scorecards.length > 0; else noScores">
+  <div *ngFor="let scorecard of scorecards; let idx = index" class="scorecard">
+    <h3>Scorecard #{{ idx + 1 }}</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Hole</th>
+          <th *ngFor="let hole of scorecard.par; let i = index">{{ i + 1 }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Par</td>
+          <td *ngFor="let par of scorecard.par">{{ par }}</td>
+        </tr>
+        <tr>
+          <td>Score</td>
+          <td *ngFor="let score of scorecard.score">{{ score }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Total Par:</strong> {{ getParTotal(scorecard.par) }}</p>
+    <p><strong>Total Score:</strong> {{ getTotal(scorecard.score) }}</p>
+    <p><strong>Over/Under Par:</strong>
+      <span [ngClass]="{ 'under-par': getDifference(scorecard) < 0, 'over-par': getDifference(scorecard) > 0 }">
+        {{ getDifference(scorecard) > 0 ? '+' : '' }}{{ getDifference(scorecard) }}
+      </span>
+    </p>
+  </div>
+</div>
+
+<ng-template #noScores>
+  <p>No scorecards saved yet.</p>
+</ng-template>
